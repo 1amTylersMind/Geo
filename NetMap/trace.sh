@@ -6,6 +6,7 @@ echo 'Starting Virtual Trace...'
 traceroute $input > trace.txt 
 touch tracer.txt
 touch geodmp.txt
+javac TextFileReader.java 
 java TextFileReader -trace trace.txt > tracer.txt 
 # Now get Geo IP data 
 cat tracer.txt | while read line 
