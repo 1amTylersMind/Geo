@@ -6,10 +6,10 @@ import java.io.File;
 class TextFileReader implements Runnable {
 
 	private File file;
-    private final String [] modes = {"trace","geo"};
-    private static int MODE;
-    Map<String,Vector<String>> netinfo = new HashMap<>();
-    Map<String,Vector<String>> geoinfo = new HashMap<>();
+    	private final String [] modes = {"trace","geo"};
+    	private static int MODE;
+    	Map<String,Vector<String>> netinfo = new HashMap<>();
+    	Map<String,Vector<String>> geoinfo = new HashMap<>();
     
 	TextFileReader(String mode, String fname){
 		this.file = Paths.get(System.getProperty("user.dir"),fname).toFile();
