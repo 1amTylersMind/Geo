@@ -22,5 +22,6 @@ java TextFileReader -geo geodmp.txt
 rm geodmp.txt
 rm trace.txt 
 rm tracer.txt 
-
+# Also grab the human readable name of the inital request
+host $input
 
