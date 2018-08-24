@@ -4,4 +4,4 @@ Gets the geo-location of the hops of a traceroute
 
 ## Where's the internet? 
 
-![US]("https://raw.githubusercontent/TylersDurden/Geo/master/NetMap/us_continental.jpg")
+![US]("https://raw.githubusercontent/TylersDurden/Geo/master/Geo/NetMap/us_continental.jpg")
