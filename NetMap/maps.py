@@ -75,6 +75,30 @@ def geo_locate(host):
     except:
         print('Bad IP Address! ')
 
+def processInternetCensus():
+    data = open('ipdata.txt', 'r')
+    ipdata = list()
+    unused = list()
+    for line in data.readlines():
+        try:
+            if (line.split('.in-addr.arpa domain name pointer ')[1].__contains__(' not found: 3(NXDOMAIN)')):
+                unused.append(line.split('.in-addr.arpa domain name pointer ')[0])
+            else:
+                ipdata.append(line.split('.in-addr.arpa domain name pointer ')[1])
+        except:
+            pass
+
+    return ipdata,unused
+
+
+def createLargerSearchSet():
+    os.system('su root ./searchspace.sh >> search.txt')
+    file = open('search.txt',' r')
+    servers = list()
+    for line in file.readlines():
+        servers.append(line)
+    return servers
+
 
 def main():
     print('Making sure the Image libraries are installed')
@@ -85,11 +109,18 @@ def main():
         print(sys.argv[1])
         geo_locate(sys.argv[1])
     else:
-        start = time.time()
         iMap = Map(0)
-        iMap.getIPinfo()
+        start = time.time()
+        # iMap.getIPinfo()
         print(str(time.time() - start)+"seconds left")
 
+        # Now get a long list of errthing
+        # But will shuffle it first because I'm not trying
+        # To overload any one's servers!
+        inetmap, emptydoms = processInternetCensus()
+        print(str(len(inetmap))+
+        " Networks dicovered from initial search")
+        createLargerSearchSet()
 
 if __name__ == '__main__':
     main()
